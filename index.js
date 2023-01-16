@@ -26,16 +26,16 @@ async function run() {
         const blogsCollection = client.db("contact").collection("blogs");
 
         app.post('/blog', async (req, res) => {
-            const newContact = req.body;
-            const result = await contactCollection.insertOne(newContact);
+            const newBlog = req.body;
+            const result = await blogsCollection.insertOne(newBlog);
             res.send(result);
         })
 
         app.get('/blog', async (req, res) => {
             const query = {};
             const cursor = blogsCollection.find(query);
-            const contacts = await cursor.toArray();
-            res.send(contacts);
+            const blogs = await cursor.toArray();
+            res.send(blogs);
         });
 
     }
